@@ -10,6 +10,7 @@
 
 namespace n101
 {
+   // 여러 버전의 max 함수를 만들어야 한다
    int max(int const a, int const b)
    {
       return a > b ? a : b;
@@ -19,6 +20,7 @@ namespace n101
    {
       return a > b ? a : b;
    }
+
 
    using swap_fn = void(*)(void*, int const, int const);
    using compare_fn = bool(*)(void*, int const, int const);
@@ -67,6 +69,7 @@ namespace n101
       int* iarr = (int*)arr;
       return iarr[i] <= iarr[j];
    }
+
 
    // int 타입만 저장할 수 있는 vector
    struct int_vector
@@ -119,6 +122,7 @@ int main()
 ```
 namespace n102
 {
+   // 1개 버전의 함수만 만들면 된다
    template <typename T>
    T max(T const a, T const b)
    {
@@ -239,7 +243,9 @@ int main()
     
 <br>  
 
-## 라이브러리 
+## 라이브러리  
+템플릿 타입을 멤버를 가지는 단수낳 `wrapper` 구조체  
+  
 wrapper.h  
 ```
 #pragma once 
@@ -294,9 +300,9 @@ namespace ext
 ```  
   
 
-## 예제 코드  
-
-### ㅇㄴㅇ
+### 2-1
+단순한 템플릿 함수  
+    
 ```
 #include <iostream>
 #include <array>
@@ -374,7 +380,9 @@ int main()
 }
 ```  
 
-### 202    
+## 202    
+단순한 템플릿 함수  
+    
 ```
 #include <iostream>
 #include <array>
@@ -419,7 +427,7 @@ int main()
 }
 ```
   
-### 203
+## 203
 ```
 #include <iostream>
 #include <array>
@@ -474,8 +482,10 @@ int main()
    }
 }
 ```
-  
-### 204
+    
+
+## 204
+템플릿 선언이 클래스 생성자에 하는 경우  
 ```
 #include <iostream>
 #include <array>
@@ -488,8 +498,6 @@ int main()
 #include <numeric>
 #include <algorithm>
 #include <functional>
-
-#include "wrapper.h"
 
 namespace n204
 {
@@ -511,12 +519,15 @@ int main()
       using namespace n204;
 
       composition<int> c;
-      c.add(41, 21);
+      c.add(41, 21);  // int 타입의 데이터만 인자로 가능하다
    }
 }
 ```
-   
-### 205
+    
+
+## 205
+템플릿 선언이 클래스 생성자가 아닌 멤버 함수에 하는 경우  
+
 ```  
 #include <iostream>
 #include <array>
@@ -529,8 +540,6 @@ int main()
 #include <numeric>
 #include <algorithm>
 #include <functional>
-
-#include "wrapper.h"
 
 namespace n205
 {
@@ -556,7 +565,8 @@ int main()
 }
 ```   
     
-### 206
+## 206
+템플릿 선언이 클래스 생성자와 멤버함수에 각각 있는 경우  
 ```
 #include <iostream>
 #include <array>
@@ -569,9 +579,6 @@ int main()
 #include <numeric>
 #include <algorithm>
 #include <functional>
-
-#include "wrapper.h"
-
 
 namespace n206
 {
@@ -607,7 +614,7 @@ int main()
 }
 ```
   
-### 207  
+## 207  
 ```
 #include <iostream>
 #include <array>
