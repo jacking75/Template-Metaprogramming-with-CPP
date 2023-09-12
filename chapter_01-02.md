@@ -613,85 +613,11 @@ int main()
    }
 }
 ```
-  
-## 207  
-```
-#include <iostream>
-#include <array>
-#include <string>
-#include <string_view>
-#include <vector>
-#include <map>
-#include <type_traits>
-#include <array>
-#include <numeric>
-#include <algorithm>
-#include <functional>
-
-#include "wrapper.h"
-
-namespace n207
-{
-   template <typename T>
-   class wrapper1 { /* ... */ };
-
-   template <typename T = int>
-   class wrapper2 { /* ... */ };
-
-   template <typename>
-   class wrapper3;
-
-   template <typename = int>
-   class wrapper4;
-
-   template <typename... T>
-   class wrapper5 { /* ... */ };
-
-   template <typename T>
-   concept WrappableType = std::is_trivial_v<T>;
-
-   template <WrappableType T>
-   class wrapper6 { /* ... */ };
-
-   template <WrappableType T = int>
-   class wrapper7 { /* ... */ };
-
-   template <WrappableType... T>
-   class wrapper8 { /* ... */ };
-}
-```
-  
-### 208 
-```
-#include <iostream>
-#include <array>
-#include <string>
-#include <string_view>
-#include <vector>
-#include <map>
-#include <type_traits>
-#include <array>
-#include <numeric>
-#include <algorithm>
-#include <functional>
-
-#include "wrapper.h"
-
-
-namespace n208
-{
-   template <int V>
-   class foo1 { /*...*/ };
-
-   template <int V = 42>
-   class foo2 { /*...*/ };
-
-   template <int... V>
-   class foo3 { /*...*/ };
-}
-```  
-  
+    
+   
 ### 209  
+크기(사이즈)를 가지는 클래스 템플릿  
+  
 ```
 #include <iostream>
 #include <array>
@@ -704,8 +630,6 @@ namespace n208
 #include <numeric>
 #include <algorithm>
 #include <functional>
-
-#include "wrapper.h"
 
 
 namespace n209
@@ -763,8 +687,17 @@ int main()
    }
 }
 ```  
+결과  
+<pre>  
+42
+1
+1
+</pre>  
+  
   
 ### 210
+Command 객체의 멤버 함수를 사용하는 템플릿  
+
 ```
 #include <iostream>
 #include <array>
@@ -777,8 +710,6 @@ int main()
 #include <numeric>
 #include <algorithm>
 #include <functional>
-
-#include "wrapper.h"
 
 
 namespace n210
@@ -830,9 +761,16 @@ int main()
       w2->output();
    }
 }
-```  
+```    
+결과   
+<pre>
+Hello, world!
+Hola mundo!
+</pre>  
   
+
 ### 211
+210과 비슷  
 ```
 #include <iostream>
 #include <array>
@@ -846,7 +784,6 @@ int main()
 #include <algorithm>
 #include <functional>
 
-#include "wrapper.h"
 
 namespace n211
 {
@@ -899,7 +836,8 @@ int main()
 }
 ```
   
-### 212
+### 212 
+210을 다르게 구현. 인자로 일반 함수를 받는 경우    
 ```
 #include <iostream>
 #include <array>
@@ -912,8 +850,6 @@ int main()
 #include <numeric>
 #include <algorithm>
 #include <functional>
-
-#include "wrapper.h"
 
 namespace n212
 {
@@ -971,7 +907,9 @@ int main()
 }
 ```
   
+
 ### 213
+템플릿 인자로 리터럴 문자열을 사용한 경우  
 ```
 #include <iostream>
 #include <array>
@@ -985,8 +923,7 @@ int main()
 #include <algorithm>
 #include <functional>
 
-#include "wrapper.h"
-
+  
 namespace n213
 {
    template <auto x>
@@ -1001,12 +938,14 @@ int main()
       using namespace n213;
       [[maybe_unused]] foo<42> f1;    // foo<int>
       [[maybe_unused]] foo<42.0> f2;  // foo<double>
-      //foo<"42"> f3;  // error
+      //foo<"42"> f3;  // error: '"42"' is not a valid template argument for type 'const char*' because string literals can never be used in this
    }
 }
 ```
-  
-### 214
+   
+
+### 214 
+213의 에러를 해결한 버전   
 ```
 #include <iostream>
 #include <array>
@@ -1019,9 +958,8 @@ int main()
 #include <numeric>
 #include <algorithm>
 #include <functional>
-
-#include "wrapper.h"
-
+  
+  
 namespace n214
 {
    template<size_t N>
@@ -1064,8 +1002,7 @@ int main()
 #include <algorithm>
 #include <functional>
 
-#include "wrapper.h"
-
+  
 namespace n215
 {
    template<auto... x>
@@ -1077,12 +1014,14 @@ int main()
 {
    {
       using namespace n215;
-      [[maybe_unused]] foo<42, 42.0, false, 'x'> f;
+      [[maybe_unused]] foo<42, 42.0, false, 'x'> f; // 만약 'x'가 아닌 "x"라면 에러
    }
 }
 ```
+  
 
 ### 216
+`template<typename>` 사용 예. 템플릿의 템플릿 객체를 멤버로 가지는 경우 사용.  
 ```
 #include <iostream>
 #include <array>
@@ -1154,8 +1093,10 @@ int main()
    }
 }
 ```
-    
+
+
 ### 219
+default 템플릿 파라미터  
 ```
 #include <iostream>
 #include <array>
@@ -1168,8 +1109,6 @@ int main()
 #include <numeric>
 #include <algorithm>
 #include <functional>
-
-#include "wrapper.h"
 
 
 namespace n219
@@ -1196,7 +1135,8 @@ int main()
    }
 }
 ```
-  
+    
+
 ### 221
 ```
 #include <iostream>
@@ -1210,8 +1150,6 @@ int main()
 #include <numeric>
 #include <algorithm>
 #include <functional>
-
-#include "wrapper.h"
 
 namespace n221
 {
@@ -1233,49 +1171,12 @@ int main()
 {
    {
       using namespace n221;
-      //bar<foo<int>> x;
+      bar<foo<int>> x;
    }
 }
 ```
   
-### 222  
-```
-#include <iostream>
-#include <array>
-#include <string>
-#include <string_view>
-#include <vector>
-#include <map>
-#include <type_traits>
-#include <array>
-#include <numeric>
-#include <algorithm>
-#include <functional>
-
-#include "wrapper.h"
-
-namespace n222
-{
-   template <typename T>
-   struct foo
-   {
-      void f() {}
-      void g() { int a = "42"; }
-   };
-}
-
-int main()
-{
-   {
-      using namespace n222;
-      foo<int> a;
-      a.f();
-      //a.g();
-   }
-
-}
-```  
-    
+      
 ### 223
 ```
 #include <iostream>
@@ -1289,8 +1190,6 @@ int main()
 #include <numeric>
 #include <algorithm>
 #include <functional>
-
-#include "wrapper.h"
 
 namespace n223
 {
@@ -1320,12 +1219,13 @@ int main()
       foo<double>* q = nullptr;
 
       x.f();
-      q->g();
+      q->g(); // 멤버 변수를 접근하지 않으므로 에러 발생하지 않음
    }
 }
 ```
   
 ### 225
+멤버 변수가 `static`  
 ```
 #include <iostream>
 #include <array>
@@ -1338,8 +1238,6 @@ int main()
 #include <numeric>
 #include <algorithm>
 #include <functional>
-
-#include "wrapper.h"
 
 namespace n225
 {
@@ -1368,21 +1266,13 @@ int main()
       b.data = 42;
       std::cout << b.data << '\n'; // 42
       std::cout << c.data << '\n'; // 42
-   }
-
-   {
-      using namespace ext;
-
-      wrapper<int> a{ 0 };
-
-      std::cout << a.data << '\n';
-      f();
-      g();
-   }
+   }   
 }
 ```  
   
+
 ### 228
+`constexpr`, 템플릿 특수화    
 ```
 #include <iostream>
 #include <array>
@@ -1396,7 +1286,6 @@ int main()
 #include <algorithm>
 #include <functional>
 
-#include "wrapper.h"
 
 namespace n228
 {
@@ -1450,8 +1339,22 @@ int main()
       std::cout << is_floating_point_v<std::string> << '\n';
    }
 }
-```
-  
+```  
+결과  
+<pre>
+0
+1
+1
+1
+0
+0
+1
+1
+1
+0
+</pre>
+   
+   
 ### 229
 ```
 #include <iostream>
