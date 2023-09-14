@@ -1,7 +1,8 @@
 # chapter 3
 실행은 온라인 컴파일러를 사용한다.  https://wandbox.org/     
 
-## 301
+## 301  
+가변 매개 함수  
 ```
 #include <iostream>
 #include <array>
@@ -42,7 +43,8 @@ int main()
 }
 ```
   
-## 302
+## 302  
+301에 템플릿을 사용. 가변 길이 템플릿
 ```
 #include <iostream>
 #include <array>
@@ -83,8 +85,15 @@ int main()
    }
 }
 ```
+결과  
+<pre>
+min(42.0, 7.5)=7.5
+min(1,5,3,-4,9)=-4  
+</pre>  
   
+
 ## 303
+가변 길이 템플릿  
 ```
 #include <iostream>
 #include <array>
@@ -115,9 +124,16 @@ int main()
       std::cout << "min(1,5,3,-4,9)=" << min(1, 5, 3, -4, 9) << '\n';
    }
 }
-```
+```  
+결과    
+<pre>
+min(42.0, 7.5)=7.5
+min(1,5,3,-4,9)=-4
+</pre>
   
+
 ## 304
+가변 길이 템플릿을 사용하지 않는 경우  
 ```
 #include <iostream>
 #include <array>
@@ -157,8 +173,10 @@ int main()
    }
 }
 ```  
-  
-## 305
+   
+
+## 305 
+가변 길이 템플릿  
 ```
 #include <iostream>
 #include <array>
@@ -199,8 +217,20 @@ int main()
    }
 }
 ```  
+결과     
+<pre>
+T n305::min(T, Args ...) [with T = int; Args = {int, int, int, int}]
+T n305::min(T, Args ...) [with T = int; Args = {int, int, int}]
+T n305::min(T, Args ...) [with T = int; Args = {int, int}]
+T n305::min(T, T) [with T = int]
+T n305::min(T, T) [with T = int]
+T n305::min(T, T) [with T = int]
+T n305::min(T, T) [with T = int]
+</pre>  
+  
   
 ## 306
+매개변수 팩  
 ```
 #include <iostream>
 #include <array>
@@ -229,6 +259,12 @@ int main()
    }
 }
 ```  
+결과  
+<pre>
+15
+1  
+</pre>
+  
   
 ## 307
 ```
@@ -262,8 +298,10 @@ int main()
    }
 }
 ```  
-  
+   
+
 ## 308 
+`sizeof...`  
 ```
 #include <iostream>
 #include <array>
@@ -291,7 +329,9 @@ int main()
 }
 ```  
   
+   
 ## 310
+두 타입의 가변 매개 변수 템플릿  
 ```
 #include <iostream>
 #include <array>
@@ -322,7 +362,8 @@ int main()
    }
 }
 ``` 
-  
+   
+
 ## 311
 ```
 #include <iostream>
@@ -357,6 +398,7 @@ int main()
 ```  
   
 ## 312
+템플릿 인자로 함수를 받는 경우  
 ```
 #include <iostream>
 #include <array>
@@ -398,7 +440,9 @@ int main()
 }
 ```  
   
+
 ## 313
+tuple 구현  
 ```
 #include <iostream>
 #include <array>
@@ -535,8 +579,18 @@ int main()
       std::cout << sum_from_zero(1, 2, 3) << '\n';
    }
 }
-```  
+```   
+결과  
+<pre>
+1
+3
+15
+0
+6  
+</pre>  
   
+
+
 ## 315
 ```
 #include <iostream>
@@ -602,34 +656,7 @@ int main()
 }
 ```  
   
-## 316
-```
-#include <iostream>
-#include <array>
-#include <functional>
-#include <tuple>
-
-namespace n316
-{
-   template <int... R>
-   constexpr int Sum = (... + R);
-
-   template <int... I>
-   constexpr auto indexes = std::make_index_sequence<5>;
-}
-
-int main()
-{
-   {
-      using namespace n316;
-
-      std::cout << Sum<1> << '\n';
-      std::cout << Sum<1, 2> << '\n';
-      std::cout << Sum<1, 2, 3, 4, 5> << '\n';
-   }
-}
-```  
-  
+    
 ## 317
 ```
 #include <iostream>

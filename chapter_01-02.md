@@ -615,7 +615,7 @@ int main()
 ```
     
    
-### 209  
+## 209  
 크기(사이즈)를 가지는 클래스 템플릿  
   
 ```
@@ -695,7 +695,7 @@ int main()
 </pre>  
   
   
-### 210
+## 210
 Command 객체의 멤버 함수를 사용하는 템플릿  
 
 ```
@@ -769,7 +769,7 @@ Hola mundo!
 </pre>  
   
 
-### 211
+## 211
 210과 비슷  
 ```
 #include <iostream>
@@ -835,8 +835,9 @@ int main()
    }
 }
 ```
-  
-### 212 
+   
+
+## 212 
 210을 다르게 구현. 인자로 일반 함수를 받는 경우    
 ```
 #include <iostream>
@@ -907,8 +908,8 @@ int main()
 }
 ```
   
-
-### 213
+  
+## 213
 템플릿 인자로 리터럴 문자열을 사용한 경우  
 ```
 #include <iostream>
@@ -944,7 +945,7 @@ int main()
 ```
    
 
-### 214 
+## 214 
 213의 에러를 해결한 버전   
 ```
 #include <iostream>
@@ -987,8 +988,9 @@ int main()
    }
 }
 ```
-  
-### 215
+
+
+## 215
 ```
 #include <iostream>
 #include <array>
@@ -1020,7 +1022,7 @@ int main()
 ```
   
 
-### 216
+## 216
 `template<typename>` 사용 예. 템플릿의 템플릿 객체를 멤버로 가지는 경우 사용.  
 ```
 #include <iostream>
@@ -1095,7 +1097,7 @@ int main()
 ```
 
 
-### 219
+## 219
 default 템플릿 파라미터  
 ```
 #include <iostream>
@@ -1137,7 +1139,7 @@ int main()
 ```
     
 
-### 221
+## 221
 ```
 #include <iostream>
 #include <array>
@@ -1177,7 +1179,7 @@ int main()
 ```
   
       
-### 223
+## 223
 ```
 #include <iostream>
 #include <array>
@@ -1223,8 +1225,9 @@ int main()
    }
 }
 ```
-  
-### 225
+
+
+## 225
 멤버 변수가 `static`  
 ```
 #include <iostream>
@@ -1271,7 +1274,7 @@ int main()
 ```  
   
 
-### 228
+## 228
 `constexpr`, 템플릿 특수화    
 ```
 #include <iostream>
@@ -1354,8 +1357,9 @@ int main()
 0
 </pre>
    
-   
-### 229
+
+## 229
+템플릿 특수화  
 ```
 #include <iostream>
 #include <array>
@@ -1369,7 +1373,6 @@ int main()
 #include <algorithm>
 #include <functional>
 
-#include "wrapper.h"
 
 namespace n229
 {
@@ -1399,8 +1402,15 @@ int main()
    }
 }
 ```  
-  
-###
+결과  
+<pre>
+0
+1
+</pre>
+
+    
+## 231
+템플릿 특수화  
 ```
 #include <iostream>
 #include <array>
@@ -1414,44 +1424,6 @@ int main()
 #include <algorithm>
 #include <functional>
 
-#include "wrapper.h"
-
-namespace n230
-{
-   template <typename>
-   struct foo {};    // primary template
-
-   template <>
-   struct foo<int>;  // explicit specialization declaration
-}
-
-int main()
-{
-   {
-      using namespace n230;
-
-      [[maybe_unused]] foo<double> a; // OK
-      [[maybe_unused]] foo<int>* b;   // OK
-      //foo<int> c;    // error, foo<int> incomplete type
-   }
-}
-```
-  
-### 231
-```
-#include <iostream>
-#include <array>
-#include <string>
-#include <string_view>
-#include <vector>
-#include <map>
-#include <type_traits>
-#include <array>
-#include <numeric>
-#include <algorithm>
-#include <functional>
-
-#include "wrapper.h"
 
 namespace n231
 {
@@ -1480,9 +1452,16 @@ int main()
       func(foo<double>{});
    }
 }
-```
+```  
+결과  
+<pre>
+int specialization
+primary template
+</pre>  
   
-### 232 
+ 
+## 232 
+템플릿 특수화. default argument를 정의하면 컴파일 에러   
 ```
 #include <iostream>
 #include <array>
@@ -1495,8 +1474,6 @@ int main()
 #include <numeric>
 #include <algorithm>
 #include <functional>
-
-#include "wrapper.h"
 
 namespace n232
 {
@@ -1523,8 +1500,10 @@ int main()
    }
 }
 ```  
-  
-### 233
+
+
+## 233
+static 멤버를 가진 템플릿 클래스의 특수화  
 ```
 #include <iostream>
 #include <array>
@@ -1537,8 +1516,6 @@ int main()
 #include <numeric>
 #include <algorithm>
 #include <functional>
-
-#include "wrapper.h"
 
 namespace n233
 {
@@ -1572,8 +1549,19 @@ int main()
    }
 }
 ```
-     
-### 234 
+결과  
+<pre>
+0
+0
+42
+100
+100
+42   
+</pre>  
+
+
+## 234 
+함수 템플릿의 템플릿 특수화  
 ```
 #include <iostream>
 #include <array>
@@ -1586,9 +1574,7 @@ int main()
 #include <numeric>
 #include <algorithm>
 #include <functional>
-
-#include "wrapper.h"
-
+  
 namespace n234
 {
    template <typename T, typename U>
@@ -1621,8 +1607,17 @@ int main()
    }
 }
 ```
+결과  
+<pre>
+int-int specialization
+int-double specialization
+primary template  
+</pre>  
   
-### 235
+
+
+## 235
+템플릿 특스화  
 ```
 #include <iostream>
 #include <array>
@@ -1636,7 +1631,6 @@ int main()
 #include <algorithm>
 #include <functional>
 
-#include "wrapper.h"
 
 namespace n235
 {
@@ -1693,10 +1687,12 @@ int main()
 }
 ```
   
-### 237
+## 237
+함수 템플릿. 파라미터에 std::array 사용  
 ```
 #include <iostream>
 #include <array>
+#include <cstring>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -1706,8 +1702,6 @@ int main()
 #include <numeric>
 #include <algorithm>
 #include <functional>
-
-#include "wrapper.h"
 
 namespace n237
 {
@@ -1742,11 +1736,18 @@ int main()
    }
 }
 ```
+결과   
+<pre>
+[1,1,2,3,5,8,13,21,0][t,e,m,p,l,a,t,e,]
+</pre>  
   
-### 238
+  
+## 238
+함수 템플릿. 파라미터에 std::array 사용    
 ```
 #include <iostream>
 #include <array>
+#include <cstring>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -1757,7 +1758,6 @@ int main()
 #include <algorithm>
 #include <functional>
 
-#include "wrapper.h"
 
 namespace n238
 {
@@ -1784,92 +1784,14 @@ int main()
    }
 }
 ```
+결과  
+<pre>
+[template]
+</pre>  
   
-### 239
-```
-#include <iostream>
-#include <array>
-#include <string>
-#include <string_view>
-#include <vector>
-#include <map>
-#include <type_traits>
-#include <array>
-#include <numeric>
-#include <algorithm>
-#include <functional>
-
-#include "wrapper.h"
-
-namespace n239
-{
-   constexpr double PI = 3.1415926535897932385L;
-
-   template <typename T>
-   T sphere_volume(T const r)
-   {
-      return static_cast<T>(4 * PI * r * r * r / 3);
-   }
-}  
-
-int main()
-{
-   {
-      using namespace n239;
-
-      float v1 = sphere_volume(42.0f);
-      double v2 = sphere_volume(42.0);
-   }
-}
-```
-  
-### 240
-```
-#include <iostream>
-#include <array>
-#include <string>
-#include <string_view>
-#include <vector>
-#include <map>
-#include <type_traits>
-#include <array>
-#include <numeric>
-#include <algorithm>
-#include <functional>
-
-#include "wrapper.h"
-
-
-namespace n240
-{
-   template <typename T>
-   struct PI
-   {
-      static const T value;
-   };
-
-   template <typename T> 
-   const T PI<T>::value = T(3.1415926535897932385L);
-
-   template <typename T>
-   T sphere_volume(T const r)
-   {
-      return 4 * PI<T>::value * r * r * r / 3;
-   }
-}
-
-int main()
-{
-   {
-      using namespace n240;
-
-      float v1 = sphere_volume(42.0f);
-      double v2 = sphere_volume(42.0);
-   }
-}
-```
    
-### 241
+## 244
+템플릿 변수, typedef와 using
 ```
 #include <iostream>
 #include <array>
@@ -1882,89 +1804,6 @@ int main()
 #include <numeric>
 #include <algorithm>
 #include <functional>
-
-#include "wrapper.h"
-
-namespace n241
-{
-   template<class T>
-   constexpr T PI = T(3.1415926535897932385L);
-
-   template <typename T>
-   T sphere_volume(T const r)
-   {
-      return 4 * PI<T> * r * r * r / 3;
-   }
-}
-
-int main()
-{
-   {
-      using namespace n241;
-
-      float v1 = sphere_volume(42.0f);
-      double v2 = sphere_volume(42.0);
-   }
-}
-```
-  
-### 242
-```
-#include <iostream>
-#include <array>
-#include <string>
-#include <string_view>
-#include <vector>
-#include <map>
-#include <type_traits>
-#include <array>
-#include <numeric>
-#include <algorithm>
-#include <functional>
-
-#include "wrapper.h"
-
-namespace n242
-{
-   struct math_constants
-   {
-      template<class T>
-      static constexpr T PI = T(3.1415926535897932385L);
-   };
-
-   template <typename T>
-   T sphere_volume(T const r)
-   {
-      return 4 * math_constants::PI<T> *r * r * r / 3;
-   }
-}
-
-int main()
-{
-   {
-      using namespace n242;
-
-      float v1 = sphere_volume(42.0f);
-      double v2 = sphere_volume(42.0);
-   }
-}
-```
-  
-### 244
-```
-#include <iostream>
-#include <array>
-#include <string>
-#include <string_view>
-#include <vector>
-#include <map>
-#include <type_traits>
-#include <array>
-#include <numeric>
-#include <algorithm>
-#include <functional>
-
-#include "wrapper.h"
 
 namespace n244
 {
@@ -2014,8 +1853,17 @@ int main()
    }
 }
 ```
-   
-### 247
+결과     
+<pre>
+[one]
+[two]
+[three]
+[one line]
+</pre>  
+  
+
+### 247 
+람다 함수 템플릿  
 ```
 #include <iostream>
 #include <array>
@@ -2029,46 +1877,8 @@ int main()
 #include <algorithm>
 #include <functional>
 
-#include "wrapper.h"
-
-namespace n247
-{
-   template <typename T>
-   using customer_addresses_t = std::map<int, std::vector<T>>;
-
-   struct delivery_address_t {};
-   struct invoice_address_t {};
-
-   using customer_delivery_addresses_t = customer_addresses_t<delivery_address_t>;
-   using customer_invoice_addresses_t = customer_addresses_t<invoice_address_t>;
-}
-
-namespace n247
-{
-   template <typename T, size_t S>
-   struct list
-   {
-      using type = std::vector<T>;
-   };
-
-   template <typename T>
-   struct list<T, 1>
-   {
-      using type = T;
-   };
-
-   template <typename T, size_t S>
-   using list_t = typename list<T, S>::type;
-}
-
 int main()
 {
-   {
-      using namespace n247;
-      static_assert(std::is_same_v<list_t<int, 1>, int>);
-      static_assert(std::is_same_v<list_t<int, 2>, std::vector<int>>);
-   }
-
    {
       int arr[] = { 1,6,3,8,4,2,9 };
       std::sort(
