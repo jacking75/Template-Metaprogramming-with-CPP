@@ -1,7 +1,9 @@
 # chapter 4
 실행은 온라인 컴파일러를 사용한다.  https://wandbox.org/     
-  
+   
+
 ## 401
+가장 먼저 선언된 함수에 히트  
 ```
 #include <iostream>
 #include <vector>
@@ -44,7 +46,12 @@ int main()
    }
 }
 ```  
-  
+결과  
+<pre>  
+processing a double: 42
+</pre>  
+
+
 ## 402
 ```
 #include <iostream>
@@ -93,8 +100,14 @@ int main()
       p.parse(h);
    }
 }
-```  
+```   
+결과  
+<pre>
+handler<int>: 42   
+</pre>  
   
+
+    
 ## 403
 ```
 #include <iostream>
@@ -191,6 +204,14 @@ int main()
    }
 }
 ```  
+결과 
+<pre>  
+specialized init
+parse
+init
+parse
+</pre>  
+  
   
 ## 405
 ```
@@ -2192,8 +2213,10 @@ int main()
    }
 }
 ```  
-  
-## 446
+    
+
+## 446 
+딕셔너리 정의
 ```
 #include <iostream>
 #include <vector>

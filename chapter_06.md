@@ -1,6 +1,9 @@
 # chapter 6
 실행은 온라인 컴파일러를 사용한다.  https://wandbox.org/     
 
+`concept`    
+  
+  
 ## 601 ~ 603
 ```
 #include <iostream>

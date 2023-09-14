@@ -1,27 +1,7 @@
 # chapter 9
 실행은 온라인 컴파일러를 사용한다.  https://wandbox.org/     
 
-## 901
-```
-#include <iostream>
-#include <string>
-#include <sstream>
-#include <array>
-#include <cassert>
-#include <vector>
-#include <ranges>
-#include <string>
-#include <cmath>
-#include <algorithm>
-#include <numeric>
-#include <format>
-
-
-int main()
-{  
-   {
-```
-  
+    
 ## 901
 ```
 #include <iostream>
